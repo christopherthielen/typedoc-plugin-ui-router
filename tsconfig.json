@@ -7,5 +7,10 @@
     "outDir": "./",
     "experimentalDecorators": true
   },
-  "files": [ "plugin.ts", "typings/index.d.ts", "node_modules/typedoc/src/typings/typescript/typescript.d.ts" ]
+  "files": [ 
+    "renameExternalModulePlugin.ts",
+    "renameNavLabelPlugin.ts",
+    "typings/index.d.ts",
+    "node_modules/typedoc/src/typings/typescript/typescript.d.ts"
+  ]
 }

@@ -1,93 +1,15 @@
-## typedoc-plugin-external-module-name
+## typedoc-plugin-ui-router
 
 ### What
 
-A plugin for http://typedoc.io
+A plugin for [Typedoc](http://typedoc.org)
 
-When using ES6 modules in Typedoc, each file gets its own listing in "External Modules", i.e., "Globals".
-This can be annoying, for projects that utilize one file per class, for instance.
+Customizes some stuff for the [UI-Router](https://ui-router.github.io/) documentation.
 
-Suppose your source files are organized like this:
 
-```
-thing1/foo.ts
-thing1/bar.ts
-thing2/baz.ts
-thing2/qux.ts
-```
+- Avoids "globals" module in favor of the index page
+- Renames "External Modules" to "Modules" because "external modules" is confusing for a docs page
 
-Typedoc will create four "External Modules":
-
-- "thing1/foo"
-- "thing1/bar"
-- "thing2/baz"
-- "thing2/qux"
-
-This plugin allows each file to specify the Typedoc External Module its code should belong to.
-If multiple files belong to the same module, they are merged.
-
-This allows more control over the modules that Typedoc generates.
-Instead of the four modules above, we could group them into two:
-
-- thing1
-- thing2
-
-### Installing
-
-Typedoc 0.4 has the ability to discover and load typedoc plugins found in node_modules.
-Simply install the plugin and run typedoc.
-
-```
-npm install --save typedoc-plugin-external-module-name
-typedoc
-```
-
-### Using
-
-Add a comment block at the top of the file (ES6 module).
-Specify the Typedoc External Module using the `@module` annotation.
-A known issue: The comment block must be followed by another comment block for some reason (?).
-
-#### thing1/foo.ts
-```js
-/**
- * @module thing1
- */
-/** second comment block */
-
-// foo stuff
-```
-
-#### thing1/bar.ts
-```js
-/**
- * @module thing1
- */ /** */
-
-// bar stuff
-```
-
-#### thing2/baz.ts
-```js
-/**
- * @module thing2
- */ /** */
-
-// baz stuff
-```
-
-Multiple files may point to the same ES6 module.
-To specify the which file's comment block will be used to document the Typedoc Module page, use `@preferred`
-
-#### thing2/qux.ts
-```js
-/**
- * @module thing2
- * @preferred
- *
- * This comment will be used to document the "thing2" module.
- */ /** */
-
-// qux stuff
-```
-
+- Renames "Globals" nav item to "Subsystems" (configurable through command line argument `--navigation-label-globals`)
+- Renames "Internals" nav item to "Public API" (configurable through command line argument `--navigation-label-internals`)
+- Renames "Externals" nav item to "Internal UI-Router API" (configurable through command line argument `--navigation-label-externals`)

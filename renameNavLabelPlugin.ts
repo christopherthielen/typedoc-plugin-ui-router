@@ -1,0 +1,87 @@
+import {Component} from "typedoc/lib/converter/components";
+import {RendererComponent} from "typedoc/lib/output/components";
+import {RendererEvent, PageEvent} from "typedoc/lib/output/events";
+import {Options, OptionsReadMode} from "typedoc/lib/utils/options";
+import {ProjectReflection} from "typedoc";
+import {ReflectionKind} from "typedoc/lib/models";
+
+/**
+ * This plugin customizes some typedoc stuff for ui-router docs
+ */
+@Component({name:'RenameNavLabel'})
+export class RenameNavLabelPlugin extends RendererComponent
+{
+  labels: {
+    globals: string,
+    internals: string,
+    externals: string
+  };
+
+  /**
+   * Rename the Default Theme's navigation labels:
+   * - 'Globals' to 'Subsystems'
+   * - 'Internals' to 'Public API'
+   * - 'Externals' to 'Internal UI-Router API'
+   */
+  initialize() {
+    var options: Options = this.application.options;
+    options.read({}, OptionsReadMode.Prefetch);
+
+    this.labels = {
+      globals: options.getValue("navigation-label-globals") || "Subsystems",
+      internals: options.getValue("navigation-label-internals") || "Public API",
+      externals: options.getValue("navigation-label-externals") || "Internal UI-Router API",
+    };
+
+    this.listenTo(this.owner, {
+      [RendererEvent.BEGIN]: this.onBeginRenderer,
+      // [PageEvent.BEGIN]:     this.onBeginPage,
+    });
+  }
+
+  private onBeginRenderer(event:RendererEvent) {
+    let navigation = this.getNavigation();
+    if (navigation) this.renameNavigationItems(navigation);
+    this.useIndexForGlobals(event.project)
+  }
+
+  private useIndexForGlobals(project: ProjectReflection) {
+    function findGlobalReflection(ref) {
+      if (!ref) return undefined;
+      if (ref.kind === ReflectionKind.Global) return ref;
+      return findGlobalReflection(ref.parent);
+    }
+
+    let externalModules = project.getReflectionsByKind(ReflectionKind.ExternalModule);
+    externalModules.map(findGlobalReflection).filter(x => !!x).forEach(global => global.url = "index.html");
+  }
+
+  private renameNavigationItems(navigation) {
+    navigation.children.forEach(item => {
+
+      // Disable globals.html in favor of index.html
+      if (item.isGlobals) item.url = 'index.html';
+
+      // Override labels of navigation items
+      if (item.isGlobals && item.title === 'Globals') item.title = this.labels.globals;
+      if (item.isLabel && item.title === 'Internals') item.title = this.labels.internals;
+      if (item.isLabel && item.title === 'Externals') item.title = this.labels.externals;
+
+    });
+  }
+
+  private getNavigation() {
+    var components = this.application.renderer.getComponents();
+    var navigationPlugin = components.filter(c => c.componentName === 'navigation')[0];
+
+    if (!navigationPlugin) {
+      return console.log("typedoc-plugin-ui-router: WARNING: NavigationPlugin not loaded")
+    }
+    if (!navigationPlugin['navigation']) {
+      return console.log("typedoc-plugin-ui-router: WARNING: NavigationPlugin.navigation not loaded")
+    }
+
+    return navigationPlugin['navigation'];
+  }
+}
+
