@@ -10,7 +10,9 @@
   "files": [ 
     "renameExternalModulePlugin.ts",
     "renameNavLabelPlugin.ts",
-    "typings/index.d.ts",
-    "node_modules/typedoc/src/typings/typescript/typescript.d.ts"
+    "node_modules/typedoc/lib/converter/ts-internal.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

@@ -22,9 +22,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     var models_1 = require("typedoc/lib/models");
     var plugins_1 = require("typedoc/lib/converter/plugins");
     var converter_1 = require("typedoc/lib/converter");
-    /**
-     * This plugin renames "External Modules" to "Modules"
-     */
+    /** This plugin renames "External Modules" to "Modules" */
     var RenameExternalModulePlugin = (function (_super) {
         __extends(RenameExternalModulePlugin, _super);
         function RenameExternalModulePlugin() {
