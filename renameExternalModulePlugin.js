@@ -30,6 +30,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
         }
         RenameExternalModulePlugin.prototype.initialize = function () {
             this.monkeyPatchGetKindPlural();
+            this.monkeyPatchGetKindSingular();
             this.listenTo(this.owner, (_a = {},
                 _a[converter_1.Converter.EVENT_CREATE_DECLARATION] = this.onDeclaration,
                 _a
@@ -42,6 +43,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
                 /** Rename title of "External Modules" to simply "Modules" */
                 if (kind === models_1.ReflectionKind.ExternalModule)
                     return "Modules";
+                return realFn.apply(plugins_1.GroupPlugin, arguments);
+            };
+        };
+        RenameExternalModulePlugin.prototype.monkeyPatchGetKindSingular = function () {
+            var realFn = plugins_1.GroupPlugin.getKindSingular;
+            plugins_1.GroupPlugin.getKindSingular = function getKindSingular(kind) {
+                /** Rename title of "External Modules" to simply "Modules" */
+                if (kind === models_1.ReflectionKind.ExternalModule)
+                    return "Module";
                 return realFn.apply(plugins_1.GroupPlugin, arguments);
             };
         };

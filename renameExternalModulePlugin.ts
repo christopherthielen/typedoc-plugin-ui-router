@@ -9,6 +9,7 @@ export class RenameExternalModulePlugin extends ConverterComponent
 {
   initialize() {
     this.monkeyPatchGetKindPlural();
+    this.monkeyPatchGetKindSingular();
 
     this.listenTo(this.owner, {
       [Converter.EVENT_CREATE_DECLARATION]:   this.onDeclaration,
@@ -22,6 +23,18 @@ export class RenameExternalModulePlugin extends ConverterComponent
       /** Rename title of "External Modules" to simply "Modules" */
       if (kind === ReflectionKind.ExternalModule)
         return "Modules";
+
+      return realFn.apply(GroupPlugin, arguments);
+    }
+  }
+
+  monkeyPatchGetKindSingular() {
+    let realFn = GroupPlugin.getKindSingular;
+    GroupPlugin.getKindSingular = function getKindSingular(kind: ReflectionKind): string {
+
+      /** Rename title of "External Modules" to simply "Modules" */
+      if (kind === ReflectionKind.ExternalModule)
+        return "Module";
 
       return realFn.apply(GroupPlugin, arguments);
     }
