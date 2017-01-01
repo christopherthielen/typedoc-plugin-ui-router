@@ -9,27 +9,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-(function (factory) {
+(function (dependencies, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", "typedoc/lib/converter/components", "typedoc/lib/output/components", "typedoc/lib/output/events", "typedoc/lib/utils/options", "typedoc/lib/models"], factory);
+        define(dependencies, factory);
     }
-})(function (require, exports) {
+})(["require", "exports", "typedoc/dist/lib/converter/components", "typedoc/dist/lib/output/components", "typedoc/dist/lib/output/events", "typedoc/dist/lib/utils/options", "typedoc/dist/lib/models"], function (require, exports) {
     "use strict";
-    var components_1 = require("typedoc/lib/converter/components");
-    var components_2 = require("typedoc/lib/output/components");
-    var events_1 = require("typedoc/lib/output/events");
-    var options_1 = require("typedoc/lib/utils/options");
-    var models_1 = require("typedoc/lib/models");
+    var components_1 = require("typedoc/dist/lib/converter/components");
+    var components_2 = require("typedoc/dist/lib/output/components");
+    var events_1 = require("typedoc/dist/lib/output/events");
+    var options_1 = require("typedoc/dist/lib/utils/options");
+    var models_1 = require("typedoc/dist/lib/models");
     /**
      * This plugin customizes some typedoc stuff for ui-router docs
      */
     var RenameNavLabelPlugin = (function (_super) {
         __extends(RenameNavLabelPlugin, _super);
         function RenameNavLabelPlugin() {
-            _super.apply(this, arguments);
+            return _super.apply(this, arguments) || this;
         }
         /**
          * Rename the Default Theme's navigation labels:
@@ -47,8 +47,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
             };
             this.listenTo(this.owner, (_a = {},
                 _a[events_1.RendererEvent.BEGIN] = this.onBeginRenderer,
-                _a
-            ));
+                _a));
             var _a;
         };
         RenameNavLabelPlugin.prototype.onBeginRenderer = function (event) {
@@ -94,10 +93,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
             }
             return navigationPlugin['navigation'];
         };
-        RenameNavLabelPlugin = __decorate([
-            components_1.Component({ name: 'RenameNavLabel' })
-        ], RenameNavLabelPlugin);
         return RenameNavLabelPlugin;
     }(components_2.RendererComponent));
+    RenameNavLabelPlugin = __decorate([
+        components_1.Component({ name: 'RenameNavLabel' })
+    ], RenameNavLabelPlugin);
     exports.RenameNavLabelPlugin = RenameNavLabelPlugin;
 });

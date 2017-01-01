@@ -1,6 +1,6 @@
 {
   "name": "typedoc-plugin-ui-router",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Typedoc customizations for ui-router",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "typedoc-plugin-external-module-name": "^1.0.0"
   },
   "dependencies": {
-    "typedoc": "^0.5.0",
+    "typedoc": "^0.5.3",
     "typescript": "^2.0.3"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
-import {Component, ConverterComponent} from "typedoc/lib/converter/components";
-import {ReflectionKind, Reflection} from "typedoc/lib/models";
-import {GroupPlugin} from "typedoc/lib/converter/plugins";
-import {Converter, Context} from "typedoc/lib/converter";
+import {Component, ConverterComponent} from "typedoc/dist/lib/converter/components";
+import {ReflectionKind, Reflection} from "typedoc/dist/lib/models";
+import {GroupPlugin} from "typedoc/dist/lib/converter/plugins";
+import {Converter, Context} from "typedoc/dist/lib/converter";
 
 /** This plugin renames "External Modules" to "Modules" */
 @Component({name:'RenameExtModule'})

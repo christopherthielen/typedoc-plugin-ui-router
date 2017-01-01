@@ -9,8 +9,7 @@
   },
   "files": [ 
     "renameExternalModulePlugin.ts",
-    "renameNavLabelPlugin.ts",
-    "node_modules/typedoc/lib/converter/ts-internal.d.ts"
+    "renameNavLabelPlugin.ts"
   ],
   "exclude": [
     "node_modules"

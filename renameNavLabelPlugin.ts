@@ -1,9 +1,9 @@
-import {Component} from "typedoc/lib/converter/components";
-import {RendererComponent} from "typedoc/lib/output/components";
-import {RendererEvent, PageEvent} from "typedoc/lib/output/events";
-import {Options, OptionsReadMode} from "typedoc/lib/utils/options";
+import {Component} from "typedoc/dist/lib/converter/components";
+import {RendererComponent} from "typedoc/dist/lib/output/components";
+import {RendererEvent, PageEvent} from "typedoc/dist/lib/output/events";
+import {Options, OptionsReadMode} from "typedoc/dist/lib/utils/options";
 import {ProjectReflection} from "typedoc";
-import {ReflectionKind} from "typedoc/lib/models";
+import {ReflectionKind} from "typedoc/dist/lib/models";
 
 /**
  * This plugin customizes some typedoc stuff for ui-router docs

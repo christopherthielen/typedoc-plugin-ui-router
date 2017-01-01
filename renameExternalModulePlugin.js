@@ -9,32 +9,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-(function (factory) {
+(function (dependencies, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", "typedoc/lib/converter/components", "typedoc/lib/models", "typedoc/lib/converter/plugins", "typedoc/lib/converter"], factory);
+        define(dependencies, factory);
     }
-})(function (require, exports) {
+})(["require", "exports", "typedoc/dist/lib/converter/components", "typedoc/dist/lib/models", "typedoc/dist/lib/converter/plugins", "typedoc/dist/lib/converter"], function (require, exports) {
     "use strict";
-    var components_1 = require("typedoc/lib/converter/components");
-    var models_1 = require("typedoc/lib/models");
-    var plugins_1 = require("typedoc/lib/converter/plugins");
-    var converter_1 = require("typedoc/lib/converter");
+    var components_1 = require("typedoc/dist/lib/converter/components");
+    var models_1 = require("typedoc/dist/lib/models");
+    var plugins_1 = require("typedoc/dist/lib/converter/plugins");
+    var converter_1 = require("typedoc/dist/lib/converter");
     /** This plugin renames "External Modules" to "Modules" */
     var RenameExternalModulePlugin = (function (_super) {
         __extends(RenameExternalModulePlugin, _super);
         function RenameExternalModulePlugin() {
-            _super.apply(this, arguments);
+            return _super.apply(this, arguments) || this;
         }
         RenameExternalModulePlugin.prototype.initialize = function () {
             this.monkeyPatchGetKindPlural();
             this.monkeyPatchGetKindSingular();
             this.listenTo(this.owner, (_a = {},
                 _a[converter_1.Converter.EVENT_CREATE_DECLARATION] = this.onDeclaration,
-                _a
-            ));
+                _a));
             var _a;
         };
         RenameExternalModulePlugin.prototype.monkeyPatchGetKindPlural = function () {
@@ -58,10 +57,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
         RenameExternalModulePlugin.prototype.onDeclaration = function (context, reflection, node) {
             // placholdeer
         };
-        RenameExternalModulePlugin = __decorate([
-            components_1.Component({ name: 'RenameExtModule' })
-        ], RenameExternalModulePlugin);
         return RenameExternalModulePlugin;
     }(components_1.ConverterComponent));
+    RenameExternalModulePlugin = __decorate([
+        components_1.Component({ name: 'RenameExtModule' })
+    ], RenameExternalModulePlugin);
     exports.RenameExternalModulePlugin = RenameExternalModulePlugin;
 });
