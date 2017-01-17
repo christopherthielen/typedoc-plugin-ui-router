@@ -1,11 +1,11 @@
 {
   "name": "typedoc-plugin-ui-router",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Typedoc customizations for ui-router",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "publish": "node publish.js"
+    "prepublish": "npm run build"
   },
   "keywords": [
     "typedocplugin",
@@ -21,11 +21,9 @@
     "typedoc-plugin-internal-external": "^1.0.0",
     "typedoc-plugin-external-module-name": "^1.0.0"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@types/handlebars": "^4.0.31",
     "typedoc": "^0.5.3",
     "typescript": "^2.1.1"
-  },
-  "devDependencies": {
-    "@types/handlebars": "^4.0.31"
   }
 }
