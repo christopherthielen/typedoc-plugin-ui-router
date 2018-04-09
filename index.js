@@ -1,5 +1,5 @@
-var renameNavLabelPlugin = require("./renameNavLabelPlugin");
-var renameExternalModulePlugin = require("./renameExternalModulePlugin");
+var renameNavLabelPlugin = require('./renameNavLabelPlugin');
+var renameExternalModulePlugin = require('./renameExternalModulePlugin');
 
 module.exports = function(PluginHost) {
   var app = PluginHost.owner;
@@ -16,14 +16,13 @@ module.exports = function(PluginHost) {
    * or
    * -nle "UI-Router Internal API"
    */
-  app.options.addDeclaration({ name: 'navigation-label-externals', short: 'nle'});
+  app.options.addDeclaration({ name: 'navigation-label-externals', short: 'nle' });
   /**
    * -nli "Public API"
    */
-  app.options.addDeclaration({ name: 'navigation-label-internals', short: 'nli'});
+  app.options.addDeclaration({ name: 'navigation-label-internals', short: 'nli' });
 
   app.renderer.addComponent('RenameNavLabel', renameNavLabelPlugin.RenameNavLabelPlugin);
 
   app.converter.addComponent('RenameExtModule', renameExternalModulePlugin.RenameExternalModulePlugin);
 };
-

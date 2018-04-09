@@ -1,20 +1,19 @@
-import {Component} from "typedoc/dist/lib/converter/components";
-import {RendererComponent} from "typedoc/dist/lib/output/components";
-import {RendererEvent, PageEvent} from "typedoc/dist/lib/output/events";
-import {Options, OptionsReadMode} from "typedoc/dist/lib/utils/options";
-import {ProjectReflection} from "typedoc";
-import {ReflectionKind} from "typedoc/dist/lib/models";
+import { Component } from 'typedoc/dist/lib/converter/components';
+import { RendererComponent } from 'typedoc/dist/lib/output/components';
+import { RendererEvent, PageEvent } from 'typedoc/dist/lib/output/events';
+import { Options, OptionsReadMode } from 'typedoc/dist/lib/utils/options';
+import { ProjectReflection } from 'typedoc';
+import { ReflectionKind } from 'typedoc/dist/lib/models';
 
 /**
  * This plugin customizes some typedoc stuff for ui-router docs
  */
-@Component({name:'RenameNavLabel'})
-export class RenameNavLabelPlugin extends RendererComponent
-{
+@Component({ name: 'RenameNavLabel' })
+export class RenameNavLabelPlugin extends RendererComponent {
   labels: {
-    globals: string,
-    internals: string,
-    externals: string
+    globals: string;
+    internals: string;
+    externals: string;
   };
 
   /**
@@ -28,9 +27,9 @@ export class RenameNavLabelPlugin extends RendererComponent
     options.read({}, OptionsReadMode.Prefetch);
 
     this.labels = {
-      globals: options.getValue("navigation-label-globals") || "Subsystems",
-      internals: options.getValue("navigation-label-internals") || "Public API",
-      externals: options.getValue("navigation-label-externals") || "Internal UI-Router API",
+      globals: options.getValue('navigation-label-globals') || 'Subsystems',
+      internals: options.getValue('navigation-label-internals') || 'Public API',
+      externals: options.getValue('navigation-label-externals') || 'Internal UI-Router API',
     };
 
     this.listenTo(this.owner, {
@@ -39,10 +38,10 @@ export class RenameNavLabelPlugin extends RendererComponent
     });
   }
 
-  private onBeginRenderer(event:RendererEvent) {
+  private onBeginRenderer(event: RendererEvent) {
     let navigation = this.getNavigation();
     if (navigation) this.renameNavigationItems(navigation);
-    this.useIndexForGlobals(event.project)
+    this.useIndexForGlobals(event.project);
   }
 
   private useIndexForGlobals(project: ProjectReflection) {
@@ -53,12 +52,14 @@ export class RenameNavLabelPlugin extends RendererComponent
     }
 
     let externalModules = project.getReflectionsByKind(ReflectionKind.ExternalModule);
-    externalModules.map(findGlobalReflection).filter(x => !!x).forEach(global => global.url = "index.html");
+    externalModules
+      .map(findGlobalReflection)
+      .filter(x => !!x)
+      .forEach(global => (global.url = 'index.html'));
   }
 
   private renameNavigationItems(navigation) {
     navigation.children.forEach(item => {
-
       // Disable globals.html in favor of index.html
       if (item.isGlobals) item.url = 'index.html';
 
@@ -66,7 +67,6 @@ export class RenameNavLabelPlugin extends RendererComponent
       if (item.isGlobals && item.title === 'Globals') item.title = this.labels.globals;
       if (item.isLabel && item.title === 'Internals') item.title = this.labels.internals;
       if (item.isLabel && item.title === 'Externals') item.title = this.labels.externals;
-
     });
   }
 
@@ -75,13 +75,12 @@ export class RenameNavLabelPlugin extends RendererComponent
     var navigationPlugin = components.filter(c => c.componentName === 'navigation')[0];
 
     if (!navigationPlugin) {
-      return console.log("typedoc-plugin-ui-router: WARNING: NavigationPlugin not loaded")
+      return console.log('typedoc-plugin-ui-router: WARNING: NavigationPlugin not loaded');
     }
     if (!navigationPlugin['navigation']) {
-      return console.log("typedoc-plugin-ui-router: WARNING: NavigationPlugin.navigation not loaded")
+      return console.log('typedoc-plugin-ui-router: WARNING: NavigationPlugin.navigation not loaded');
     }
 
     return navigationPlugin['navigation'];
   }
 }
-
