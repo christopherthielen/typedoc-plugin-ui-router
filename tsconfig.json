@@ -3,15 +3,10 @@
     "moduleResolution": "node",
     "allowJs": true,
     "module": "umd",
-    "target": "es5",
+    "target": "es2015",
     "outDir": "./",
     "experimentalDecorators": true
   },
-  "files": [ 
-    "renameExternalModulePlugin.ts",
-    "renameNavLabelPlugin.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "files": ["renameExternalModulePlugin.ts", "renameNavLabelPlugin.ts"],
+  "exclude": ["node_modules"]
 }
