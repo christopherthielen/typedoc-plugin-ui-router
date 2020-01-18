@@ -1,7 +1,8 @@
 import { Component } from 'typedoc/dist/lib/converter/components';
 import { RendererComponent } from 'typedoc/dist/lib/output/components';
 import { RendererEvent, PageEvent } from 'typedoc/dist/lib/output/events';
-import { Options, OptionsReadMode } from 'typedoc/dist/lib/utils/options';
+import { ConsoleLogger } from 'typedoc/dist/lib/utils';
+import { Options } from 'typedoc/dist/lib/utils/options';
 import { ProjectReflection } from 'typedoc';
 import { ReflectionKind } from 'typedoc/dist/lib/models';
 
@@ -24,12 +25,12 @@ export class RenameNavLabelPlugin extends RendererComponent {
    */
   initialize() {
     var options: Options = this.application.options;
-    options.read({}, OptionsReadMode.Prefetch);
+    options.read(new ConsoleLogger());
 
     this.labels = {
-      globals: options.getValue('navigation-label-globals') || 'Subsystems',
-      internals: options.getValue('navigation-label-internals') || 'Public API',
-      externals: options.getValue('navigation-label-externals') || 'Internal UI-Router API',
+      globals: (options.getValue('navigation-label-globals') as string) || 'Subsystems',
+      internals: (options.getValue('navigation-label-internals') as string) || 'Public API',
+      externals: (options.getValue('navigation-label-externals') as string) || 'Internal UI-Router API',
     };
 
     this.listenTo(this.owner, {
