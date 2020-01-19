@@ -24,15 +24,6 @@ export class RenameNavLabelPlugin extends RendererComponent {
    * - 'Externals' to 'Internal UI-Router API'
    */
   initialize() {
-    var options: Options = this.application.options;
-    options.read(new ConsoleLogger());
-
-    this.labels = {
-      globals: (options.getValue('navigation-label-globals') as string) || 'Subsystems',
-      internals: (options.getValue('navigation-label-internals') as string) || 'Public API',
-      externals: (options.getValue('navigation-label-externals') as string) || 'Internal UI-Router API',
-    };
-
     this.listenTo(this.owner, {
       [RendererEvent.BEGIN]: this.onBeginRenderer,
       // [PageEvent.BEGIN]:     this.onBeginPage,
@@ -40,6 +31,14 @@ export class RenameNavLabelPlugin extends RendererComponent {
   }
 
   private onBeginRenderer(event: RendererEvent) {
+    var options: Options = this.application.options;
+
+    this.labels = {
+      globals: (options.getValue('navigation-label-globals') as string) || 'Subsystems',
+      internals: (options.getValue('navigation-label-internals') as string) || 'Public API',
+      externals: (options.getValue('navigation-label-externals') as string) || 'Internal UI-Router API',
+    };
+
     let navigation = this.getNavigation();
     if (navigation) this.renameNavigationItems(navigation);
     this.useIndexForGlobals(event.project);
