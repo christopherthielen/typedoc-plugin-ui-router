@@ -4,6 +4,7 @@
 .idea
 
 # Built using tsc
+index.js
 renameExternalModulePlugin.js
 renameNavLabelPlugin.js
 

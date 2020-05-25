@@ -7,6 +7,6 @@
     "outDir": "./",
     "experimentalDecorators": true
   },
-  "files": ["renameExternalModulePlugin.ts", "renameNavLabelPlugin.ts"],
+  "files": ["index.ts", "renameExternalModulePlugin.ts", "renameNavLabelPlugin.ts"],
   "exclude": ["node_modules"]
 }
