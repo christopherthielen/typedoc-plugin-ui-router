@@ -19,8 +19,8 @@
   "author": "Chris Thielen",
   "license": "MIT",
   "peerDependencies": {
-    "typedoc-plugin-external-module-name": "^1.0.0",
-    "typedoc-plugin-internal-external": "^1.0.0"
+    "typedoc-plugin-external-module-name": ">=1.0.0",
+    "typedoc-plugin-internal-external": ">=1.0.0"
   },
   "devDependencies": {
     "@types/handlebars": "^4.1.0",
