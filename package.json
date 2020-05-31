@@ -24,12 +24,12 @@
   },
   "devDependencies": {
     "@types/handlebars": "^4.1.0",
-    "@uirouter/publish-scripts": "^2.3.44",
+    "@uirouter/publish-scripts": "^2.3.49",
     "husky": "^4.0.10",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "typedoc": "^0.16.7",
-    "typescript": "^3.7.5"
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.3"
   },
   "husky": {
     "hooks": {
