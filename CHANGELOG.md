@@ -1,3 +1,11 @@
+# 3.0.0 (2020-06-05)
+
+[Compare `typedoc-plugin-ui-router` versions 2.0.2 and 3.0.0](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/2.0.2...3.0.0)
+
+### Features
+
+- Total reset of the plugin behavior -- now requires docgen.json and expects typedoc 0.17.x or above ([d62621f](https://github.com/christopherthielen/typedoc-plugin-ui-router/commit/d62621f))
+
 ## 2.0.2 (2020-05-25)
 
 [Compare `typedoc-plugin-ui-router` versions 2.0.1 and 2.0.2](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/2.0.1...2.0.2)
