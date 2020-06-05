@@ -1,3 +1,11 @@
+## 3.0.1 (2020-06-05)
+
+[Compare `typedoc-plugin-ui-router` versions 3.0.0 and 3.0.1](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/3.0.0...3.0.1)
+
+### Bug Fixes
+
+- process reflections with missing reflection.sources ([1057722](https://github.com/christopherthielen/typedoc-plugin-ui-router/commit/1057722))
+
 # 3.0.0 (2020-06-05)
 
 [Compare `typedoc-plugin-ui-router` versions 2.0.2 and 3.0.0](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/2.0.2...3.0.0)
