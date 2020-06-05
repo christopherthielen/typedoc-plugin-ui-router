@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "allowJs": true,
-    "module": "umd",
-    "target": "es2015",
+    "module": "CommonJS",
+    "target": "ES2017",
     "outDir": "./",
+    "lib": ["ES2020", "dom"],
     "experimentalDecorators": true
   },
-  "files": ["index.ts", "renameExternalModulePlugin.ts", "renameNavLabelPlugin.ts"],
-  "exclude": ["node_modules"]
+  "files": ["index.ts"]
 }

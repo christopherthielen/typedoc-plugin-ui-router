@@ -6,7 +6,9 @@
 # Built using tsc
 index.js
 renameExternalModulePlugin.js
-renameNavLabelPlugin.js
+GithubPluginMonkeyPatch.js
+handlebarsDebug.js
+typedoc-plugin-ui-router.js
 
 # Logs
 logs
