@@ -34,7 +34,7 @@ export function load({ application }: { application: CliApplication }) {
 
     // Rename other included @uirouter modules to a nicer name, e.g., @uirouter/core/state/stateService
     for (const reflection of context.project.getReflectionsByKind(ReflectionKind.Module)) {
-      if (reflection.sources.find((x) => x.fileName.includes('@uirouter'))) {
+      if ((reflection.sources || []).find((x) => x.fileName.includes('@uirouter'))) {
         const match = new RegExp('"?(node_modules/)?(@uirouter/[^/]+)(/lib|/src)?(/.*?)(.d)?"?$').exec(reflection.name);
         if (match) {
           reflection.name = `${match[2]}${match[4]}`;
