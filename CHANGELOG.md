@@ -1,3 +1,11 @@
+## 3.0.2 (2020-07-18)
+
+[Compare `typedoc-plugin-ui-router` versions 3.0.1 and 3.0.2](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/3.0.1...3.0.2)
+
+### Bug Fixes
+
+- strip off /project/src/includes from included project source filenames ([e8f5103](https://github.com/christopherthielen/typedoc-plugin-ui-router/commit/e8f5103))
+
 ## 3.0.1 (2020-06-05)
 
 [Compare `typedoc-plugin-ui-router` versions 3.0.0 and 3.0.1](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/3.0.0...3.0.1)
