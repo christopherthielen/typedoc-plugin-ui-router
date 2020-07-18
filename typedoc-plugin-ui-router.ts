@@ -46,9 +46,7 @@ export function load({ application }: { application: CliApplication }) {
     Object.values(context.project.reflections).forEach((reflection) => {
       if (!reflection.kindOf(ReflectionKind.Module)) {
         (reflection.sources || []).forEach((source) => {
-          if (source.fileName.includes('@uirouter')) {
-            source.fileName = source.fileName.replace(/^\/?src\//, '');
-          }
+          source.fileName = source.fileName.replace(/^\/?(project\/)?(src\/includes\/)?/g, '');
         });
       }
     });
