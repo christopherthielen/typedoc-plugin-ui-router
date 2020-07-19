@@ -1,3 +1,15 @@
+# 4.0.0 (2020-07-19)
+
+[Compare `typedoc-plugin-ui-router` versions 3.0.2 and 4.0.0](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/3.0.2...4.0.0)
+
+### Code Refactoring
+
+- read config from package.json in the 'docgen' key ([da49f94](https://github.com/christopherthielen/typedoc-plugin-ui-router/commit/da49f94))
+
+### BREAKING CHANGES
+
+- config is now read from package.json, not docgen.json
+
 ## 3.0.2 (2020-07-18)
 
 [Compare `typedoc-plugin-ui-router` versions 3.0.1 and 3.0.2](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/3.0.1...3.0.2)
