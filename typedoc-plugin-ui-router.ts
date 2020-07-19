@@ -1,12 +1,5 @@
 import * as fs from 'fs';
-import {
-  CliApplication,
-  ContainerReflection,
-  NavigationItem,
-  ProjectReflection,
-  ReflectionKind,
-  Renderer,
-} from 'typedoc';
+import { CliApplication, ContainerReflection, NavigationItem, ProjectReflection, ReflectionKind } from 'typedoc';
 import { Context, Converter } from 'typedoc/dist/lib/converter';
 import { PageEvent, RendererEvent } from 'typedoc/dist/lib/output/events';
 
@@ -18,12 +11,15 @@ interface Navigation {
 }
 
 export function load({ application }: { application: CliApplication }) {
-  if (!fs.existsSync('docgen.json')) {
-    throw new Error(`${process.cwd()}/docgen.json doesn't exist`);
+  const CONFIG = `package.json`;
+  if (!fs.existsSync(CONFIG)) {
+    throw new Error(`${process.cwd()}/${CONFIG} doesn't exist`);
   }
-  const navigation: Navigation = JSON.parse(fs.readFileSync('docgen.json').toString()).navigation;
+
+  const config = JSON.parse(fs.readFileSync(CONFIG).toString()).docgen || {};
+  const navigation: Navigation = config.navigation;
   if (!navigation || Object.keys(navigation).length === 0) {
-    throw new Error(`${process.cwd()}/docgen.json doesn't contain a navigation object`);
+    throw new Error(`${process.cwd()}/${CONFIG} doesn't contain a navigation object`);
   }
 
   application.converter.on(Converter.EVENT_RESOLVE_END, (context: Context) => {
@@ -53,7 +49,7 @@ export function load({ application }: { application: CliApplication }) {
   });
 
   // Do not show navigation for every Module.
-  // Instead, load navigation from docgen.json and manually construct the nav links
+  // Instead, load navigation from ${CONFIG} and manually construct the nav links
   application.renderer.on(PageEvent.BEGIN, (pageEvent: PageEvent) => {
     const reflection = pageEvent.model;
     let project = reflection as ProjectReflection;
