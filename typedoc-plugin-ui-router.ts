@@ -2,12 +2,13 @@ import * as fs from 'fs';
 import { CliApplication, ContainerReflection, NavigationItem, ProjectReflection, ReflectionKind } from 'typedoc';
 import { Context, Converter } from 'typedoc/dist/lib/converter';
 import { PageEvent, RendererEvent } from 'typedoc/dist/lib/output/events';
+import { find } from 'lodash';
 
 import './GithubPluginMonkeyPatch';
 import './handlebarsDebug';
 
 interface Navigation {
-  [sectionName: string]: string[];
+  [sectionName: string]: Array<string | object>;
 }
 
 export function load({ application }: { application: CliApplication }) {
@@ -65,8 +66,13 @@ export function load({ application }: { application: CliApplication }) {
         const section = new NavigationItem(sectionName, null, parent);
         section.isVisible = true;
 
-        navigation[sectionName].forEach((childName) => {
-          const child = Object.values(project.reflections).find((x) => x.name === childName);
+        navigation[sectionName].forEach((matchObject) => {
+          if (typeof matchObject === 'string') {
+            matchObject = { name: matchObject };
+          }
+
+          const child = find(Object.values(project.reflections), matchObject);
+
           if (child) {
             const item = new NavigationItem(child.name, child.url, parent, child.cssClasses, child);
             item.isVisible = true;
