@@ -1,3 +1,11 @@
+## 4.0.1 (2020-08-08)
+
+[Compare `typedoc-plugin-ui-router` versions 4.0.0 and 4.0.1](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/4.0.0...4.0.1)
+
+### Features
+
+- allow the navigation builder to select symbols based on object comparison to a reflection, not purely based on the reflection's name ([1463332](https://github.com/christopherthielen/typedoc-plugin-ui-router/commit/1463332))
+
 # 4.0.0 (2020-07-19)
 
 [Compare `typedoc-plugin-ui-router` versions 3.0.2 and 4.0.0](https://github.com/christopherthielen/typedoc-plugin-ui-router/compare/3.0.2...4.0.0)
