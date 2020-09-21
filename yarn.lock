@@ -63,11 +63,11 @@
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
 "@uirouter/publish-scripts@^2.3.49":
-  version "2.3.49"
-  resolved "https://registry.yarnpkg.com/@uirouter/publish-scripts/-/publish-scripts-2.3.49.tgz#95a88482bd7460ee28d0fc1ebedda761ae721454"
-  integrity sha512-hf7HwH0kgFMR1EYmGob1AIl3f7uYQgum4JYpuK8H7nszrHYN04a+jIRgJoxVLBIy0HyQmMWaW7YKLCVtIkixOw==
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/@uirouter/publish-scripts/-/publish-scripts-2.5.4.tgz#facc20b7f3ef4cd6def05805c077edfb3b1bb935"
+  integrity sha512-zHFHH1V890JF2b6HYPdr2PvJEGyZoL4HxqrZ6dPaJRFP65chbbnWzo0+JXE7QkwPWQrG+TQU30/Golg+ekRuiQ==
   dependencies:
-    check-peer-dependencies "2.0.2"
+    check-peer-dependencies "^2.0.6"
     conventional-changelog "^3.1.21"
     conventional-changelog-ui-router-core "^1.4.2"
     find-parent-dir "^0.3.0"
@@ -81,11 +81,6 @@
     shx "^0.3.1"
     tmp "^0.2.1"
     tweak-sourcemap-paths "0.0.4"
-    typedoc "^0.17.7"
-    typedoc-plugin-external-module-name "3.1.0"
-    typedoc-plugin-internal-external "2.1.1"
-    typedoc-plugin-ui-router "2.0.2"
-    ui-router-typedoc-themes "1.0.2"
     yalc "^1.0.0-pre.35"
     yargs "^15.3.1"
 
@@ -242,10 +237,10 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-check-peer-dependencies@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/check-peer-dependencies/-/check-peer-dependencies-2.0.2.tgz#f41ee03da90e9caa42b0d35b95d29ba5ec0d8f50"
-  integrity sha512-2ONozVlLrkoTtlHBNFBNDQn4pjzecvwD8NlkpiPxVcvio9YulTdORzEr4kzrm1k2M3oZ2B7uNCzoe8w/FM/6Cg==
+check-peer-dependencies@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/check-peer-dependencies/-/check-peer-dependencies-2.0.6.tgz#e407e6f3433eac6138765474a114c96a787d7c04"
+  integrity sha512-q++3UFY2vgZEcUlHSDLR6JmBispEf6az90wNFSfM3hiD+DuZUd0mD+eYGSQMTUVvvEZkaS+B71utvsKYiBPemg==
   dependencies:
     resolve "^1.14.1"
     semver "^7.1.1"
@@ -1137,12 +1132,7 @@ lodash.templatesettings@^4.0.0:
   dependencies:
     lodash._reinterpolate "^3.0.0"
 
-lodash@^4.1.2, lodash@^4.17.15:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
-
-lodash@^4.17.19:
+lodash@^4.17.15, lodash@^4.17.19:
   version "4.17.19"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
   integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
@@ -2189,24 +2179,6 @@ typedoc-default-themes@^0.10.1:
   dependencies:
     lunr "^2.3.8"
 
-typedoc-plugin-external-module-name@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/typedoc-plugin-external-module-name/-/typedoc-plugin-external-module-name-3.1.0.tgz#3c2dc72ee6fa511efdee21f9f470140a5c69042b"
-  integrity sha512-7Jym2cOkSbMtXRb2C9RytIihryB/a7UZZbCWeIZ+PoSxglOwiHqTAPWWVN2AbVKh3iKy8PpGRCYggfDnpb177g==
-  dependencies:
-    lodash "^4.1.2"
-    semver "^7.1.1"
-
-typedoc-plugin-internal-external@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/typedoc-plugin-internal-external/-/typedoc-plugin-internal-external-2.1.1.tgz#fb3842bc2fe04dd7b3e77832a1da8251ba30f97d"
-  integrity sha512-T7f/zb4HDReKo8yhSyNUf6flhaWkIJx9/Od9BkNzXOBBaKs+TgWH5sLxQ5aeGa5IDDWohrtrFvHWm3D/RQq2Nw==
-
-typedoc-plugin-ui-router@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/typedoc-plugin-ui-router/-/typedoc-plugin-ui-router-2.0.2.tgz#db8526df73967e89ea12b4d84dd33bb317816286"
-  integrity sha512-HyD8JH5wF0L7qkmsmm2PKCFU2EsXKAwluULBu4AEaEKt7wpFvrV9UgNIOujFQeok9KiSTmc51tcbJw1FGjETPA==
-
 typedoc@^0.17.7:
   version "0.17.7"
   resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.17.7.tgz#70797401140403a5f91589ed3f4f24c03841bf7a"
@@ -2235,11 +2207,6 @@ uglify-js@^3.1.4:
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
-
-ui-router-typedoc-themes@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ui-router-typedoc-themes/-/ui-router-typedoc-themes-1.0.2.tgz#3274960b8ee61e026b405ce3afcd9a2925992861"
-  integrity sha1-MnSWC47mHgJrQFzjr82aKSWZKGE=
 
 universalify@^0.1.0:
   version "0.1.2"
